@@ -1,0 +1,27 @@
+language: php
+sudo: false
+
+php:
+  - 7.1
+
+addons:
+  mariadb: '10.3'
+
+before_script:
+  - mysql -e 'CREATE DATABASE test;'
+  - composer self-update
+  - composer install --dev --prefer-dist --no-interaction
+
+script:
+  - php bin/console doctrine:database:create -n
+  - php bin/console doctrine:migrations:migrate -n
+  - php bin/console doctrine:schema:update --dump-sql
+  - php bin/console doctrine:schema:validate -n
+
+cache:
+  directories:
+    - $COMPOSER_CACHE_DIR
+
+notifications:
+  email:
+    - bukashk0zzz@gmail.com
