@@ -1,0 +1,24 @@
+version: "2.1"
+
+services:
+    php:
+        container_name: php
+        image: jakubsacha/symfony-docker:php7.1
+        volumes:
+            - .:/var/www/html
+            - cache-composer:/root/.composer/cache
+        depends_on:
+            - db
+    db:
+        container_name: db
+        image: mariadb:10.3
+        environment:
+            MYSQL_DATABASE: test
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+            MYSQL_ROOT_PASSWORD: testRoot
+        ports:
+            - 8806:3306
+
+volumes:
+    cache-composer:
