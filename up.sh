@@ -9,4 +9,5 @@ docker-compose exec --user www-data php chmod -R 777 /var/www/html/var
 
 docker-compose exec --user www-data php bin/console doctrine:database:drop -n --force
 docker-compose exec --user www-data php bin/console doctrine:database:create -n
-docker-compose exec --user www-data php bin/console doctrine:migrations:migrate -n
+docker-compose exec --user www-data php bin/console doctrine:migrations:migrate -n -q
+docker-compose exec --user www-data php bin/console doctrine:schema:update --dump-sql
