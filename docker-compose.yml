@@ -11,7 +11,7 @@ services:
             - db
     db:
         container_name: db
-        image: mariadb:10.3
+        image: mysql:5.7
         environment:
             MYSQL_DATABASE: test
             MYSQL_USER: test

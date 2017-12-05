@@ -38,7 +38,7 @@ class Admin
     /**
      * @var bool
      *
-     * @ORM\Column(name="status", type="boolean", nullable=false, options={"default" : "1"})
+     * @ORM\Column(name="status", type="boolean", nullable=false, options={"unsigned": true, "default" : "1"})
      */
     private $status = true;
 

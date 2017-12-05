@@ -1,14 +1,17 @@
 language: php
-sudo: false
+sudo: true
 
 php:
   - 7.1
 
-addons:
-  mariadb: '10.3'
+services:
+  - docker
+
+before_install:
+  - sudo service mysql stop || sudo service mysql-5.6 stop || sudo stop mysql-5.6 || sudo stop mysql || echo "failed to stop mysql"
+  - sudo docker run -e MYSQL_DATABASE=test -e MYSQL_USER=test -e MYSQL_PASSWORD=test -e MYSQL_ROOT_PASSWORD=testRoot -d -p 127.0.0.1:3306:3306 mysql:5.7
 
 before_script:
-  - mysql -e 'CREATE DATABASE test;'
   - composer self-update
   - composer install --dev --prefer-dist --no-interaction
 
