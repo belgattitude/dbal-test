@@ -36,6 +36,13 @@ class Admin
     private $password;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="about", type="string", length=255, nullable=true)
+     */
+    private $about;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="status", type="boolean", nullable=false, options={"default" : "1"})
