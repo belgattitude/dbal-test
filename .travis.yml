@@ -5,7 +5,7 @@ php:
   - 7.1
 
 addons:
-  mariadb: '10.3'
+  mariadb: '10.2'
 
 before_script:
   - mysql -e 'CREATE DATABASE doctrine_test_6790;'
@@ -15,9 +15,10 @@ before_script:
 script:
   - php bin/console doctrine:database:drop -n --force
   - php bin/console doctrine:database:create -n
-  - php bin/console doctrine:migrations:migrate -n
+  #- php bin/console doctrine:migrations:migrate -n
+  - php bin/console doctrine:schema:update --force
   - php bin/console doctrine:schema:update --dump-sql
-  - php bin/console doctrine:schema:validate -n
+  #- php bin/console doctrine:schema:validate -n
 
 cache:
   directories:
