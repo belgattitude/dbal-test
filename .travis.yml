@@ -24,6 +24,3 @@ cache:
   directories:
     - $COMPOSER_CACHE_DIR
 
-notifications:
-  email:
-    - bukashk0zzz@gmail.com
